@@ -6,9 +6,14 @@ pragma solidity 0.8.13;
 
 contract FlashLoanTester {
 
+    bool public success;
+
 
     function test() public payable {
         require(msg.value == 10_000 ether, "nope");
-        (bool success,) = msg.sender.call{value: msg.value}("");
+        (bool _success,) = msg.sender.call{value: msg.value}("");
+        require(_success);
+        success = true;
+
     }
 }
