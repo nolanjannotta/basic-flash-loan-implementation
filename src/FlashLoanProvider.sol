@@ -21,11 +21,11 @@ contract FlashLoanProvider {
 
         // send the loan and execute provided payload
         (bool success,) = msg.sender.call{value: amount}(data);
-        require(success); // is this require statement neccessary? is success is false, loan wont be paid back and will be caught by next require
+        require(success, "payload failed"); // is this require statement neccessary? is success is false, loan wont be paid back and will be caught by next require
 
 
 
-        // make sure the exact amount is paid back
+        // make sure the exact amount is paid back 
         require(balance == address(this).balance, "loan not paid back"); 
 
 

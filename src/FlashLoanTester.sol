@@ -10,7 +10,7 @@ contract FlashLoanTester {
 
 
     function test() public payable {
-        require(msg.value == 10_000 ether, "nope");
+        require(msg.value == 10_000 ether, "Tester: incorrect price");
         (bool _success,) = msg.sender.call{value: msg.value}("");
         require(_success);
         success = true;

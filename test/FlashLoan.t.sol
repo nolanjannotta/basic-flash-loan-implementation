@@ -50,4 +50,10 @@ contract FlashLoanTest is Test {
         assertEq(success, true);
 
     }
+
+    function testWrongTestPrice() public {
+        testFundFlashLoanProvider();
+        vm.expectRevert("payload failed");
+        exectutor.execute(9_000 ether);
+    }
 }
